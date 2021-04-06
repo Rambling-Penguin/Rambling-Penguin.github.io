@@ -10,7 +10,7 @@ let testAssets = [];
 for (let i = 0; i < 25; i++) {
     let width = getRandomSize(200, 400);
     let height = getRandomSize(200, 400);
-    testAssets.push(new AlbumImage(`https://placekitten.com/${width}/${height}`, 'pretty kitty'));
+    testAssets.push(new AlbumImage(`https://placekitten.com/${width}/${height}`, 'pretty kitty', `https://placekitten.com/${width * 3}/${height * 3}`));
 }
 
 export const TestAlbum =  new Album('test', {
