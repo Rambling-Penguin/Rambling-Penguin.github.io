@@ -18,6 +18,9 @@ export default class SmugmugImage extends HTMLElement {
         this.size = size;
         this.waterFlag = withWatermark ? '1' : '2';
 
+        this.dataset.accountId = accountId;
+        this.dataset.photoId = photoId;
+
         this.dataset.bsToggle = 'modal';
         this.dataset.id = this.accountId + '_' + this.photoId;
         this.dataset.bsTarget = '#' + this.dataset.id;
@@ -43,16 +46,19 @@ export default class SmugmugImage extends HTMLElement {
         `;
 
         document.body.append(modalDiv);
-
-        let modal = new bootstrap.Modal(document.querySelector('#' + this.dataset.id));
+        this.modal = new bootstrap.Modal(document.querySelector('#' + this.dataset.id));
         this.onclick = () => {
-            let link = document.querySelector(`a[data-photo-id="${this.photoId}"]`);
-            if (link.children.length === 0) {
-                link.innerHTML = `<img src="${this.getImgUrl(this.size)}">`;
-            }
-            window.location.hash = this.dataset.id;
-            modal.show();
+            this.showModal();
         }
+    }
+
+    showModal() {
+        let link = document.querySelector(`a[data-photo-id="${this.photoId}"]`);
+        if (link.children.length === 0) {
+            link.innerHTML = `<img src="${this.getImgUrl(this.size)}">`;
+        }
+        window.location.hash = this.dataset.id;
+        this.modal.show();
     }
 
     getImgUrl(size) {
