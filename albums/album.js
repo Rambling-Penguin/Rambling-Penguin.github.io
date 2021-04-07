@@ -6,7 +6,7 @@ export default class Album {
             subtitle: subtitle,
             keywords: keywords,
             date: date,
-        }
+        };
         this.assets = assets
     }
 
