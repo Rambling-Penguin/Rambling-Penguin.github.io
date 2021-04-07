@@ -28,7 +28,7 @@ export default class AlbumCard extends HTMLElement {
                             ${this.album.meta.keywords.map(key => `<span class="badge bg-secondary" style="margin: 3px">${key}</span>`).join('')}
                         </p>
                     </div>
-                    <div class="shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; background-image: url(${this.album.meta.cover.getImgUrl(SMUGMUG_SIZES.LARGE)}); background-position: center"></div>
+                    <div class="shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; background-image: url(${this.album.meta.cover.getImgUrl(SMUGMUG_SIZES.LARGE)}); background-position: center; background-repeat: no-repeat;background-size: cover;"></div>
                 </div>
             </a>
         `;
