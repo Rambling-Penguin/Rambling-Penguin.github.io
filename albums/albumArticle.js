@@ -56,11 +56,28 @@ export default class AlbumArticle extends HTMLElement {
                     }
                 }
             </style>
+            
+             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+                <div class="col-md-5 p-lg-5 mx-auto">
+                    <h1 class="display-4 fw-normal">${this.album.meta.title}</h1>
+                    <p class="lead fw-normal">${this.album.meta.subtitle}</p>
+                </div>
+            </div>
+            
             <div class="photos-grid"></div>
         `;
         this.album.assets.forEach(asset => {
             this.shadow.querySelector('.photos-grid').append(asset);
-        })
+        });
+
+        if (window.location.hash) {
+            let hashValue = window.location.hash.substring(1);
+            let hashParts = hashValue.split('_');
+            let smugmugImage = this.shadow.querySelector(`[data-account-id="${hashParts[0]}"][data-photo-id="${hashParts[1]}"]`);
+            if (smugmugImage) {
+                smugmugImage.showModal();
+            }
+        }
 
     }
 
