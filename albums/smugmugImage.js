@@ -55,7 +55,7 @@ export default class SmugmugImage extends HTMLElement {
     showModal() {
         let link = document.querySelector(`a[data-photo-id="${this.photoId}"]`);
         if (link.children.length === 0) {
-            link.innerHTML = `<img src="${this.getImgUrl(this.size)}">`;
+            link.innerHTML = `<img src="${this.getImgUrl(this.size)}" style="max-width: 100vw">`;
         }
         window.location.hash = this.dataset.id;
         this.modal.show();
