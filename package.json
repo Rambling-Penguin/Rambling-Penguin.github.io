@@ -1,0 +1,25 @@
+{
+  "name": "ramblingpenguin.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "page.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rambling-Penguin/Rambling-Penguin.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rambling-Penguin/Rambling-Penguin.github.io/issues"
+  },
+  "homepage": "https://github.com/Rambling-Penguin/Rambling-Penguin.github.io#readme",
+  "dependencies": {
+    "bootstrap-icons": "^1.4.1"
+  }
+}
