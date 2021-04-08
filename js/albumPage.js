@@ -6,6 +6,8 @@ let parts = href.split('/');
 let id = parts[parts.length - 1];
 id = id.substring(0, id.lastIndexOf('.html'));
 
+console.log(id);
+
 let currentAlbum = AllAlbums.find(e => e.id === id);
 
 document.querySelector('main').append(new AlbumArticle(currentAlbum));

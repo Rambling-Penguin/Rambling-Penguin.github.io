@@ -63,3 +63,38 @@
         flex: 1;
     }
 }
+
+
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.image-container .dropdown {
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image-container a {
+    align-content: center;
+    justify-content: center;
+}
+
+.image-container .btn:hover {
+    background-color: black;
+}
