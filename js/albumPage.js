@@ -4,7 +4,7 @@ import {AllAlbums} from "../albums/albums.js";
 let href = window.location.href;
 let parts = href.split('/');
 let id = parts[parts.length - 1];
-id = id.substring(0, id.length - '.html'.length);
+id = id.substring(0, id.lastIndexOf('.html'));
 
 let currentAlbum = AllAlbums.find(e => e.id === id);
 

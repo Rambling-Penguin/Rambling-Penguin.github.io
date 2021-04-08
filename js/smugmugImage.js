@@ -57,7 +57,11 @@ export default class SmugmugImage extends HTMLElement {
         if (link.children.length === 0) {
             link.innerHTML = `<img src="${this.getImgUrl(this.size)}" style="max-width: 100vw">`;
         }
-        window.location.hash = this.dataset.id;
+
+        if (history.pushState) {
+            let newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?a=${this.accountId}&i=${this.photoId}`;
+            window.history.pushState({path:newurl},'',newurl);
+        }
         this.modal.show();
     }
 

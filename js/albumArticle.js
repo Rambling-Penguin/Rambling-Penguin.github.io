@@ -2,11 +2,10 @@ export default class AlbumArticle extends HTMLElement {
     constructor(album) {
         super();
         this.album = album;
-        this.shadow = this.attachShadow({mode: 'open'});
     }
 
     connectedCallback() {
-        this.shadow.innerHTML = `
+        this.innerHTML = `
             <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
             <link href="../../css/site.css" rel="stylesheet" />
             <style>
@@ -67,13 +66,11 @@ export default class AlbumArticle extends HTMLElement {
             <div class="photos-grid"></div>
         `;
         this.album.assets.forEach(asset => {
-            this.shadow.querySelector('.photos-grid').append(asset);
+            this.querySelector('.photos-grid').append(asset);
         });
-
-        if (window.location.hash) {
-            let hashValue = window.location.hash.substring(1);
-            let hashParts = hashValue.split('_');
-            let smugmugImage = this.shadow.querySelector(`[data-account-id="${hashParts[0]}"][data-photo-id="${hashParts[1]}"]`);
+        let searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.get('i') && searchParams.get('a')) {
+            let smugmugImage = this.querySelector(`[data-account-id="${searchParams.get('a')}"][data-photo-id="${searchParams.get('i')}"]`);
             if (smugmugImage) {
                 smugmugImage.showModal();
             }
