@@ -1,4 +1,4 @@
-import {SMUGMUG_SIZES} from "../albums/smugmugImage.js";
+import {SMUGMUG_SIZES} from "./smugmugImage.js";
 
 export default class AlbumCard extends HTMLElement {
     constructor(album) {
@@ -18,7 +18,7 @@ export default class AlbumCard extends HTMLElement {
             
             </style>
 
-            <a href="albums/${this.album.id}/">               
+            <a href="albums/${this.album.id}.html">               
     
                 <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden album-card" style="margin-top: 1rem">
                     <div class="my-3 p-3">

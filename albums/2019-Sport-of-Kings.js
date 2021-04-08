@@ -1,5 +1,5 @@
-import Album from "../album.js";
-import SmugmugImage, {SMUGMUG_SIZES} from "../smugmugImage.js";
+import Album from "../js/album.js";
+import SmugmugImage, {SMUGMUG_SIZES} from "../js/smugmugImage.js";
 
 const SMUGMUG_ACCOUNTID = 'e06339ba';
 const GALERY_NAME = '2019-Sport-of-Kings';
