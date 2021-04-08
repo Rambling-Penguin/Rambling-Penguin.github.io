@@ -14,4 +14,8 @@ export default class Album {
     addAsset(asset) {
         this.assets.push(asset);
     }
+
+    getSearchTokens() {
+        return [...this.meta.title.split(' ').map(t => t.toLowerCase()), ...this.meta.subtitle.split(' ').map(s => s.toLowerCase()), ...this.meta.keywords.map(k => k.toLowerCase())];
+    }
 }

@@ -4,14 +4,10 @@ export default class PortfolioContainer extends HTMLElement {
     constructor(albums) {
         super();
         this.albums = albums;
-        this.shadow = this.attachShadow({mode: 'open'});
     }
 
     connectedCallback() {
-        this.shadow.innerHTML = `
-                <link href="css/site.css" rel="stylesheet" />
-             <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-             
+        this.innerHTML = `             
              <style>
                 #portfolioContainer {
                     display: grid; 
@@ -26,22 +22,43 @@ export default class PortfolioContainer extends HTMLElement {
                 }
              
             </style>
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
 
-             <!--<div style="margin-left: 1rem; margin-right: 1rem"> 
-                <input type="text" name="filter" class="form-control" placeholder="filter"/>
-             </div>-->
+                <input type="text" class="form-control" id="inputTextSearch" placeholder="Filter albums">
+          </div>
+                
+                
 
              <div id="portfolioContainer" style="">
              
              </div>
         `;
 
-
         this.albums.forEach(album => {
-             this.shadow.querySelector('#portfolioContainer').append(new AlbumCard(album))
+             this.querySelector('#portfolioContainer').append(new AlbumCard(album))
+        });
+
+        let searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.get('filter')) {
+            this.querySelector('#inputTextSearch').value = searchParams.get('filter');
+            this.applySearch();
+        }
+
+        this.querySelector('#inputTextSearch').addEventListener('keyup', (e) => {
+            this.applySearch();
         });
     }
 
+    applySearch() {
+        let searchTerms = this.querySelector('#inputTextSearch').value.split(' ').map(t => t.toLowerCase());
+        Array.from(this.querySelectorAll('#portfolioContainer album-card')).forEach(albumCard => {
+            albumCard.applyFilter(searchTerms);
+        });
+        if (history.pushState) {
+            let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?filter=' + encodeURI(searchTerms.join(' '));
+            window.history.pushState({path:newurl},'',newurl);
+        }
+    }
 }
 
 window.customElements.define('portfolio-container', PortfolioContainer);

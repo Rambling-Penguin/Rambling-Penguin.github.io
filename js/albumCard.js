@@ -45,6 +45,25 @@ export default class AlbumCard extends HTMLElement {
             card.classList.add('bg-light');
         }
     }
+
+    applyFilter(searchTerms) {
+        let tokens = this.album.getSearchTokens();
+        let match = true;
+        if (tokens.length > 0) {
+            let matchedTerms = searchTerms.filter(term => {
+                return tokens.filter(token => {
+                    return token.indexOf(term) > -1
+                }).length > 0
+            });
+            match = matchedTerms.length >= searchTerms.length;
+        }
+
+        if (match) {
+            this.classList.remove('d-none');
+        } else {
+            this.classList.add('d-none');
+        }
+    }
 }
 
 window.customElements.define('album-card', AlbumCard);
