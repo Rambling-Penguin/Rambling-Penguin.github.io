@@ -79,8 +79,8 @@
 /* Style the button and place it in the middle of the container/image */
 .image-container .dropdown {
     position: absolute;
-    top: 90%;
-    left: 10%;
+    bottom: 10px;
+    left: 100px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     font-size: 16px;

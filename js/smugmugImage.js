@@ -46,6 +46,11 @@ export default class SmugmugImage extends HTMLElement {
 
         document.body.append(modalDiv);
         this.modal = new bootstrap.Modal(document.querySelector('#' + this.dataset.id));
+        document.querySelector('#' + this.dataset.id).addEventListener('hidden.bs.modal', () => {
+            if (history.pushState) {
+                history.back();
+            }
+        })
         this.onclick = () => {
             this.showModal();
         }
@@ -58,6 +63,12 @@ export default class SmugmugImage extends HTMLElement {
             let newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?a=${this.accountId}&i=${this.photoId}`;
             window.history.pushState({path:newurl},'',newurl);
         }
+
+        window.onpopstate = (e) => {
+            console.log(e);
+            this.modal.hide()
+            window.onpopstate = null;
+        };
 
         if (link.children.length === 0) {
             link.innerHTML = `<img src="${this.getImgUrl(this.size)}" style="max-width: 100vw">
