@@ -2,7 +2,7 @@ import Album from "../js/album.js";
 import SmugmugImage, {SMUGMUG_SIZES} from "../js/smugmugImage.js";
 
 const SMUGMUG_ACCOUNTID = 'e06339ba';
-const GALERY_NAME = '2019-September-Crown/';
+const GALERY_NAME = '2019-September-Crown';
 const GALLERY_ID = 'n-8TrSJR';
 
 export const SEPTEMBER_CROWN_2019 =  new Album(GALERY_NAME,  {
