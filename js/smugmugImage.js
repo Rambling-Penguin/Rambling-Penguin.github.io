@@ -77,6 +77,9 @@ export default class SmugmugImage extends HTMLElement {
                     Options
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        <a class="dropdown-item" href="${this.getImgUrl(SMUGMUG_SIZES.XXXLARGE)}" download="${this.photoId}">Download</a>
+                    </li>
                     <li> 
                         <a  class="dropdown-item" 
                             data-photo-id="${this.photoId}" 
