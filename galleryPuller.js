@@ -1,0 +1,1 @@
+Array.from(document.querySelectorAll('a.sm-organizer-tile-link')).map(a => a.href.substring(a.href.indexOf('/i-')+3)).map(id => ``)

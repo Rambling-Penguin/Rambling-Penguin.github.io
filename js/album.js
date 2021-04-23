@@ -9,6 +9,9 @@ export default class Album {
             cover: cover
         };
         this.assets = assets
+        if (!this.meta.cover) {
+            this.meta.cover = this.assets[0];
+        }
     }
 
     addAsset(asset) {
